@@ -18,13 +18,7 @@ public class TestHelloClassLoader {
             Object o = clazz.newInstance();
             Method hello = clazz.getMethod("hello");
             hello.invoke(o);
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
+        } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
             e.printStackTrace();
         }
     }
