@@ -3,10 +3,7 @@ package com.xuesran.datasource.masterslave.controller.books;
 import com.xuesran.datasource.masterslave.entity.Books;
 import com.xuesran.datasource.masterslave.service.BooksService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -32,7 +29,7 @@ public class BooksController {
      *
      * @param book the book
      */
-    @RequestMapping(value = "/books/add", consumes = {"application/json"}, method = RequestMethod.POST)
+    @PostMapping(value = "/books/add", consumes = {"application/json"})
     public void addBook(@RequestBody Books book) {
         booksService.addBook(book);
     }
@@ -42,7 +39,7 @@ public class BooksController {
      *
      * @return the all books from master
      */
-    @RequestMapping(value = "/books/find/master", method = RequestMethod.GET)
+    @GetMapping(value = "/books/find/master")
     public List getAllBooksFromMaster() {
         return booksService.getAllBooksFromMaster();
     }
@@ -52,7 +49,7 @@ public class BooksController {
      *
      * @return the all books from slave
      */
-    @RequestMapping(value = "/books/find/slave", method = RequestMethod.GET)
+    @GetMapping(value = "/books/find/slave")
     public List getAllBooksFromSlave() {
         return booksService.getAllBooksFromSlave();
     }
